@@ -26,7 +26,7 @@ modules.exports = {
                         isAdmin: 0
                     })
                     .then(function(newUser) {
-                        return res.status(201).josn({
+                        return res.status(201).json({
                             'userId': newUser.id
                         })
                     })
@@ -36,13 +36,13 @@ modules.exports = {
 
                 });
             } else {
-                return res.status(500).json({ 'error': 'user already existe'})
+                return res.status(409).json({ 'error': 'user already existe'})
             }
 
         })
-        .catch(function(err)){
+        .catch(function(err){
             return res.status(500).json({ 'error': 'unable to verify user'})
-        };
+        });
 
     },
     login: function(req, res){
