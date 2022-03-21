@@ -8,8 +8,8 @@ exports.router = (function() {
     const apiRouter = express.Router();
 
     //User routes
-    apiRouter.route('/user/signup/').post(userCtrl.signup),
-    apiRouter.route('user/login/').post(userCtrl.login);
+    apiRouter.route('/users/signup/').post(userCtrl.signup),
+    apiRouter.route('/users/login/').post(userCtrl.login);
 
     return apiRouter;
 })();
