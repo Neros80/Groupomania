@@ -186,6 +186,7 @@ login: function(req, res) {
     });
 },
     getUserProfile: function(req, res) {
+        //Getting auth header
         const headerAuth = req.headers['authorization'];
         const userId = jwtUtils.getUserId(headerAuth);
 
@@ -204,5 +205,38 @@ login: function(req, res) {
         }).catch(function(err){
             res.status(500).json({ 'error': 'cannot fetch user'});
         });
+    },
+    updateUserProfile: function(req, res) {
+        //getting auth header
+        const headerAuth = req.headers['authorization'];
+        const userId = jwtUtils.getUserId(headerAuth);
+
+        //params
+        const userName = req.body.userName;
+
+        asyncLib.waterfall([
+            function(done) {
+                models.User.findOne({
+                    attributes: ['id', 'userName'],
+                    where: { id: userId}
+                }).then(function (userFound) {
+                    done(null, userFound);
+                })
+                .catch(function(err) {
+                    return res.stauts(500).json({ 'error': 'unable to verify user'});
+                });
+            },
+            function(userFound, done) {
+                if(userFound) {
+                    userFound.update({
+                        userName: (userName ? userName : userFound.userName)
+                    }).then(function() {
+                        done(userFound);
+                    }).catch(function(err) {
+                        res.status(500).json({'error': 'cannot update user'})
+                    });
+                }
+            }
+        ])
     }
 };
