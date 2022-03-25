@@ -1,9 +1,11 @@
 <template>
   <div class="home">
+    <p> bonjour: {{this.user.userName}} </p>
     <div class="post" v-for="post in posts" :key="post">
-      <h2 id="user"> {{post.UserId}} </h2>
+      <h2 id="user"> {{post.User.username}} </h2>
         <h3 id="title"> {{post.title}} </h3>
-      <span> {{post.messages}} </span>
+      <span class="message"> {{post.messages}} </span>
+        <p> {{post.comment}}</p>
       <textarea name="comment" id="comment" cols="10" rows="5"></textarea>
       <button class="response">repondre</button>
     </div>
@@ -24,7 +26,8 @@ export default {
   },
   data(){
        return {
-      posts : []
+      posts : [],
+      user: JSON.parse(localStorage.getItem('user'))
     }
   },
   mounted() {
@@ -33,7 +36,14 @@ export default {
       .then(response => this.posts = response.data)
       // .then(response => (console.log(response)))
   
-}
+},
+  created(){
+      console.log(localStorage.getItem('token'));
+      if(localStorage.getItem('token') == null) {
+        this.$router.push('/login')
+      }
+      console.log(this.user);
+    }
 }
 </script>
 
@@ -56,6 +66,9 @@ export default {
   padding: 1rem;
   background-color: rgb(255, 255, 255);
   position: relative;
+}
+.message{
+  margin: 1rem;
 }
 .response{
   color: white;

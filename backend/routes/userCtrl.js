@@ -177,7 +177,7 @@ login: function(req, res) {
     ], function(userFound) {
       if (userFound) {
         return res.status(201).json({
-          'userId': userFound.id,
+          'user': userFound,
           'token': jwtUtils.generateTokenForUser(userFound)
         });
       } else {
@@ -218,7 +218,7 @@ login: function(req, res) {
             function(done) {
                 models.User.findOne({
                     attributes: ['id', 'userName'],
-                    where: { id: userId}
+                    where: { id: userId }
                 }).then(function (userFound) {
                     done(null, userFound);
                 })

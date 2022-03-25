@@ -12,11 +12,12 @@ const ITEMS_LIMIT = 50;
  module.exports = {
      createPost: function(req, res) {
         //Getting auth header
-        const headerAuth = req.headers['authorization'];
-        const userId = jwtUtils.getUserId(headerAuth);
+        const headerAuth  = req.headers['authorization'];
+        const userId      = jwtUtils.getUserId(headerAuth);
         //params
         const title = req.body.title;
         const messages = req.body.messages;
+        const comment = req.body.comment;
 
         if(title == null || messages == null) {
             return res.status(400).json({ 'error': 'missing paramters'});
@@ -27,7 +28,7 @@ const ITEMS_LIMIT = 50;
       asyncLib.waterfall([
         function(done){
             models.User.findOne({
-                where: { id: userId}
+                where: { id: userId }
             })
             .then (function(userFound){
                 done(null, userFound);
@@ -41,13 +42,14 @@ const ITEMS_LIMIT = 50;
             models.Post.create({
                 title : title,
                 messages : messages,
+                comment: comment,
                 UserId: userFound.id
             })
             .then(function(newPost) {
                 done(newPost);
             });
         } else {
-            res.status(404).json({'error': 'user not found'});
+            res.status(401).json({'error': 'user not found'});
         }
     },
         ], function(newPost) {
@@ -73,7 +75,7 @@ const ITEMS_LIMIT = 50;
             attributes: (fields !== '*' && fields != null) ? fields.split(',') : null,
             limit: (!isNaN(limit)) ? limit : null,
             offset: (!isNaN(offset)) ? offset : null,
-            includes: [{
+            include: [{
                 model: models.User,
                 attributes: [ 'username' ]
             }]
@@ -81,7 +83,7 @@ const ITEMS_LIMIT = 50;
             if (messages) {
                 res.status(200).json(messages);
             } else {
-                res.status(404).json({ 'error' : 'no message found'});
+                res.status(401).json({ 'error' : 'no message found'});
             }
         }).catch (function(err) {
             console.log(err);

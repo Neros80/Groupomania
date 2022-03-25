@@ -1,4 +1,5 @@
-import { createStore } from 'vuex'
+import { createStore, storeKey } from 'vuex'
+
 
 export default createStore({
   state: {
@@ -9,7 +10,10 @@ export default createStore({
   mutations: {
   },
   actions: {
+
   },
   modules: {
   }
 })
+
+
