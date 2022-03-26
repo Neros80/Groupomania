@@ -17,7 +17,6 @@ export default {
         userName: this.userName,
         password: this.password
       }).then((res) => {
-        console.log(res);
         localStorage.setItem('user',JSON.stringify(res.data.user))
         localStorage.setItem('token',JSON.stringify(res.data.token))
         this.$router.push('/')

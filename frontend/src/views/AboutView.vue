@@ -16,15 +16,20 @@
 import axios from 'axios'
 
 export default {
+  data(){
+       return {
+      user: JSON.parse(localStorage.getItem('user'))
+    }
+  },
   methods: {
     submit(){
           axios
       .post('http://localhost:3000/api/post/new',{
         title: this.title,
-        messages: this.messages
-      })
-      console.log(this.title);
-      console.log(this.message);
+        messages: this.messages,
+        userName: this.user.userName
+      }, {headers: {authorization: JSON.parse(localStorage.getItem("token"))}})
+      .then(() => this.$router.push('/'))
     }
   },
     created(){

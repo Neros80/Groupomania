@@ -8,11 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      userName:{
+        allowNull: false,
+        type: Sequelize.STRING,
+        defaultValue:''
+      },
       coms: {
         allowNull:false,
         type: Sequelize.STRING
       },
-      messageId: {
+      PostId: {
         allowNull:false,
         type: Sequelize.INTEGER,
         references: {

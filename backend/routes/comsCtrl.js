@@ -25,7 +25,7 @@ const ITEMS_LIMIT = 50;
       asyncLib.waterfall([
         function(done){
             models.Post.findOne({
-                where: { id: userId }
+                where: { id: req.body.PostId }
             })
             .then (function(userFound){
                 done(null, userFound);
@@ -38,7 +38,7 @@ const ITEMS_LIMIT = 50;
             if(userFound) {
             models.Coms.create({
                 coms : coms,
-                UserId: userFound.id
+                PostId: req.body.PostId
             })
             .then(function(newComs) {
                 done(newComs);
@@ -55,35 +55,4 @@ const ITEMS_LIMIT = 50;
             }
         })
     },
-     listComs: function(req, res){
-        const fields = req.query.fields;
-        const limit = parseInt(req.query.limit);
-        const offset = parseInt(req.query.offet);
-        const order = req.query.order;
-
-        if (limit > ITEMS_LIMIT) {
-            limit = ITEMS_LIMIT;
-          }
-
-        models.Coms.findAll({
-            order: [(order != null) ? order.split(':') : ['title', 'ASC']],
-            attributes: (fields !== '*' && fields != null) ? fields.split(',') : null,
-            limit: (!isNaN(limit)) ? limit : null,
-            offset: (!isNaN(offset)) ? offset : null,
-            include: [{
-                model: models.Post,
-                attributes: [ 'message' ]
-            }]
-        }).then (function(coms) {
-            if (coms) {
-                res.status(200).json(coms);
-            } else {
-                res.status(401).json({ 'error' : 'no message found'});
-            }
-        }).catch (function(err) {
-            console.log(err);
-            res.status(500).json({"error": "invalid fields"})
-        })
-
-} 
 }

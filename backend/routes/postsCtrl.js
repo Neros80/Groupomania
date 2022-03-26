@@ -41,7 +41,8 @@ const ITEMS_LIMIT = 50;
             models.Post.create({
                 title : title,
                 messages : messages,
-                UserId: userFound.id
+                userId: userFound.id,
+                userName: userFound.userName
             })
             .then(function(newPost) {
                 done(newPost);
@@ -69,15 +70,9 @@ const ITEMS_LIMIT = 50;
           }
 
         models.Post.findAll({
-            order: [(order != null) ? order.split(':') : ['title', 'ASC']],
-            attributes: (fields !== '*' && fields != null) ? fields.split(',') : null,
-            limit: (!isNaN(limit)) ? limit : null,
-            offset: (!isNaN(offset)) ? offset : null,
-            include: [{
-                model: models.User,
-                attributes: [ 'username' ]
-            }]
-        }).then (function(messages) {
+            include: models.Coms
+        })
+        .then (function(messages) {
             if (messages) {
                 res.status(200).json(messages);
             } else {

@@ -21,7 +21,6 @@ exports.router = (function() {
     apiRouter.route('/post/').get(postCtrl.listPost);  
 
     //commentaire routes
-    // apiRouter.route('/coms/new').post(comsCtrl.createComs);
-    // apiRouter.route('/coms/').get(comsCtrl.listComs);
+    apiRouter.route('/coms/new').post(comsCtrl.createComs);
     return apiRouter;
 })();

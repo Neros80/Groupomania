@@ -2,15 +2,12 @@
 module.exports = (sequelize, DataTypes) => {
   const Coms = sequelize.define('Coms', {
         coms: DataTypes.STRING,
-        messageId: DataTypes.INTEGER,
+        PostId: DataTypes.INTEGER,
+        userName: DataTypes.STRING
   }, {classMethods: {
     associate: function(models) {
 
-      models.Coms.belongsTo(models.Coms,{
-        foreinKey: {
-          allowNull: false
-        }
-      })
+      models.Coms.belongsTo(models.Post)
     }
   }
 });

@@ -11,22 +11,22 @@ module.exports = {
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: 'Users',
-          key: 'id'
-        }
+        defaultValue:0
+      },
+      userName:{
+        allowNull: false,
+        type: Sequelize.STRING,
+        defaultValue:''
       },
       title: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue:''
       },
       messages: {
         allowNull: false,
-        type: Sequelize.STRING
-      },
-      comment: {
-        allowNull: true,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue:''
       },
       createdAt: {
         allowNull: false,

@@ -1,13 +1,15 @@
 <template>
   <div class="home">
-    <p> bonjour: {{this.user.userName}} </p>
-    <div class="post" v-for="post in posts" :key="post">
-      <h2 id="user"> {{post.User.username}} </h2>
+    <div class="post" v-for="post in posts.slice().reverse()" :key="post">
+      <h2 id="user"> {{post.userName}} </h2>
         <h3 id="title"> {{post.title}} </h3>
       <span class="message"> {{post.messages}} </span>
-        <p> {{post.comment}}</p>
-      <textarea name="comment" id="comment" cols="10" rows="5"></textarea>
-      <button class="response">repondre</button>
+        <div v-for="com in post.Coms" :key="com.id">
+        <p>Numero du commentaire: {{com.id}}</p>
+        <p>{{com.coms}}</p>
+      </div>
+      <textarea name="comment" id="comment" cols="10" rows="5" v-model='commentContent'></textarea>
+      <button class="response" @click='createComment(post.id)'>repondre</button>
     </div>
 
 
@@ -43,6 +45,21 @@ export default {
         this.$router.push('/login')
       }
       console.log(this.user);
+    },
+    methods:{
+      createComment(id){
+        axios.post('http://localhost:3000/api/coms/new', {
+          coms: this.commentContent,
+          PostId: id,
+          userName: this.user.userName
+        })
+        .then(() => {
+          this.commentContent = ''
+          axios
+      .get('http://localhost:3000/api/post/')
+      .then(response => this.posts = response.data)
+        })
+      }
     }
 }
 </script>
