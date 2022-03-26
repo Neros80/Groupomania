@@ -3,6 +3,8 @@
 const express = require('express');
 const userCtrl = require('./routes/userCtrl')
 const postCtrl = require('./routes/postsCtrl')
+const comsCtrl = require('./routes/comsCtrl')
+
 
 // Router
 exports.router = (function() {
@@ -16,7 +18,10 @@ exports.router = (function() {
 
     //message routes
     apiRouter.route('/post/new').post(postCtrl.createPost);
-    apiRouter.route('/post/').get(postCtrl.listPost)  
+    apiRouter.route('/post/').get(postCtrl.listPost);  
 
+    //commentaire routes
+    // apiRouter.route('/coms/new').post(comsCtrl.createComs);
+    // apiRouter.route('/coms/').get(comsCtrl.listComs);
     return apiRouter;
 })();

@@ -5,7 +5,8 @@
     <router-link to="/signup"  v-if="!currentUser">Signup</router-link> |
     <router-link to="/login"  v-if="!currentUser">login</router-link>
   </nav>
-  <body>
+  <body> 
+
     
   </body>
   <router-view/>
@@ -39,7 +40,7 @@
 
 <style>
 body{
-  background-color: antiquewhite;
+  background-color: rgba(255, 199, 199, 0.548);
   display: flex;
   justify-content: center;
   width: 100%;
