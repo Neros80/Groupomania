@@ -27,7 +27,8 @@ import Hello from '@/components/HelloWorld.vue'
 
 <style>
 body{
-  background-color: rgba(255, 199, 199, 0.548);
+  font-family: 'Open Sans', sans-serif;
+  background-color: rgb(24, 24, 24);
   display: flex;
   justify-content: center;
   width: 100%;
