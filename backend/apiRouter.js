@@ -13,14 +13,16 @@ exports.router = (function() {
     //User routes
     apiRouter.route('/users/signup/').post(userCtrl.signup);
     apiRouter.route('/users/login/').post(userCtrl.login);
-    apiRouter.route('/users/me/').get(userCtrl.getUserProfile);
-    apiRouter.route('/users/me/').put(userCtrl.updateUserProfile);
+    apiRouter.route('/users/').get(userCtrl.getAllUsers);
+    apiRouter.route('/users/').delete(userCtrl.deleteUser);
 
     //message routes
     apiRouter.route('/post/new').post(postCtrl.createPost);
     apiRouter.route('/post/').get(postCtrl.listPost);  
+    apiRouter.route('/post/').delete(postCtrl.deletePost);
 
     //commentaire routes
     apiRouter.route('/coms/new').post(comsCtrl.createComs);
+    apiRouter.route('/coms/').delete(comsCtrl.deleteCom)
     return apiRouter;
 })();

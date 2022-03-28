@@ -38,7 +38,8 @@ const ITEMS_LIMIT = 50;
             if(userFound) {
             models.Coms.create({
                 coms : coms,
-                PostId: req.body.PostId
+                PostId: req.body.PostId,
+                userName: req.body.userName
             })
             .then(function(newComs) {
                 done(newComs);
@@ -55,4 +56,14 @@ const ITEMS_LIMIT = 50;
             }
         })
     },
+    deleteCom: function (req, res) {
+        console.log(req.body);
+        models.Coms.findOne({
+            where: { id: req.body.PostId }
+        })
+            .then((Coms) => Coms.destroy().then(() => res.status(200).json({
+                message: "comment deleted"
+            })))
+            .catch((err) => res.status(500).json(err))
+    }
 }

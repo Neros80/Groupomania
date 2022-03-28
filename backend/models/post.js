@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       })
     },
     associate: function(models) {
-      models.Post.hasMany(models.Coms)
+      models.Post.hasMany(models.Coms,{ onDelete: "CASCADE" })
     }
   }
 });

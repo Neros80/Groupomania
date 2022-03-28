@@ -1,14 +1,10 @@
 <template>
   <div class="signup">
     <label for="userName">Pseudo <input v-model="userName" type="text"/></label>
-    <label for="password">Mot de passe <input v-model="password" type="password"
-    /></label>
+    <label for="password">Mot de passe <input v-model="password" type="password"/></label>
     <button v-on:click="submit">Connection</button>
 
-    
-    <div class="iconBtn">
-      <fa icon="trash" />
-    </div>
+
   </div>
 </template>
 

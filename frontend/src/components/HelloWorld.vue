@@ -5,6 +5,7 @@
     <router-link to="/signup"  v-if="!currentUser">Signup</router-link> |
     <router-link to="/login"  v-if="!currentUser">login</router-link> |
     <button @click="logout" v-if="currentUser">logout</button>
+    <router-link to="/admin">admin</router-link> |
   </nav>
 </template>
 

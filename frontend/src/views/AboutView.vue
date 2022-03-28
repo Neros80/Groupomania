@@ -49,7 +49,6 @@ export default {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 900px;
   padding: 1rem;  
 }
 </style>

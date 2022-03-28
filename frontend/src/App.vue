@@ -32,4 +32,8 @@ body{
   justify-content: center;
   width: 100%;
 }
+
+#app{
+  width: 66%;
+}
 </style>
