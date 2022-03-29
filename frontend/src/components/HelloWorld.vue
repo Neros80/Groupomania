@@ -25,6 +25,7 @@
       
       logout(){
         localStorage.clear()
+        this.currentUser = false
         this.$router.push('/login')
       }
     },

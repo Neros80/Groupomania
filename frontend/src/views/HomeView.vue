@@ -11,12 +11,11 @@
         <span class="message"> {{ post.messages }} </span>
       </div>
       <div class="coms_content" v-for="com in post.Coms" :key="com.id">
-        <p id="coms">
-          {{ com.coms }}
-          <button id="delete" @click="deleteComs(com.id)" v-if="com.userName == user.userName || user.isAdmin == true">
-            supprimer
-          </button>
-        </p>
+        <div id="coms">
+        <p id="userComs">{{com.userName}}</p>
+        <p id="coms--content"> {{ com.coms }}</p>
+        <button id="delete" @click="deleteComs(com.id)" v-if="com.userName == user.userName || user.isAdmin == true">Supprimer</button>
+      </div>
       </div>
       <div id="response">
         <textarea name="comment" id="comment" cols="10" rows="5" placeholder="Commentaire" v-model="commentContent"></textarea>
@@ -88,9 +87,7 @@ export default {
     },
     deleteComs(id) {
       axios
-        .delete("http://localhost:3000/api/post/", {
-          data: { com: id },
-        })
+        .delete(`http://localhost:3000/api/coms/${id}`)
         .then(() => {
           this.getAllPost();
         });
@@ -144,6 +141,7 @@ export default {
 }
 .message {
   margin: auto;
+  font-size: 1rem;
 }
 .coms_content{
   width: 100%;
@@ -151,7 +149,6 @@ export default {
 }
 
 #coms {
-  
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -161,10 +158,22 @@ export default {
   border: 1px solid rgb(80, 80, 80);
   margin-top: 0.5rem;
   margin-bottom: 0.1rem;
+  flex-wrap: wrap;
 }
-#coms button {
+#coms > button {
   position: absolute;
   right: 20px;
+  top: 20px;
+}
+#userComs{
+    width: 100%;
+    padding-bottom: 0.2rem;
+    font-size: 22px;
+    margin: 0.2rem;
+}
+#coms--content{
+  padding: 1rem;
+  width: 90%;
 }
 #comment {
   margin: auto;

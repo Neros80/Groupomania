@@ -19,7 +19,10 @@ export default {
       }).then((res) => {
         localStorage.setItem('user',JSON.stringify(res.data.user))
         localStorage.setItem('token',JSON.stringify(res.data.token))
-        this.$router.push('/')
+
+          this.$router.push('/')  
+
+     
       })
     }
   }

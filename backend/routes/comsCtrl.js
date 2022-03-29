@@ -59,7 +59,7 @@ const ITEMS_LIMIT = 50;
     deleteCom: function (req, res) {
         console.log(req.body);
         models.Coms.findOne({
-            where: { id: req.body.PostId }
+            where: { id: req.params.id }
         })
             .then((Coms) => Coms.destroy().then(() => res.status(200).json({
                 message: "comment deleted"

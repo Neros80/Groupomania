@@ -2,7 +2,7 @@
 
   <body>
     <div class="navgiation"> 
-    <img class="logo" src="./assets/icon-left-font-monochrome-white.png" alt="logo-blanc">
+    <img class="logo" src="./assets/new-icon-left-font.png" alt="logo-blanc">
      <font-awesome-icon icon="fa-solid fa-trash-can" />
     <Hello />
     </div>
@@ -42,11 +42,9 @@ body{
 
 .logo{
   width: 50%;
-  padding: 1rem;
   margin: auto;
-  margin-bottom: -70px;
-  margin-top: -65px;
-
+  margin-bottom: -100px;
+  margin-top: -160px;
 }
 
 #app{

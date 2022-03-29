@@ -23,6 +23,6 @@ exports.router = (function() {
 
     //commentaire routes
     apiRouter.route('/coms/new').post(comsCtrl.createComs);
-    apiRouter.route('/coms/').delete(comsCtrl.deleteCom)
+    apiRouter.route('/coms/:id').delete(comsCtrl.deleteCom)
     return apiRouter;
 })();
