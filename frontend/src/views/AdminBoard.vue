@@ -5,7 +5,7 @@
         <span id="adminBoard__users"> {{ user.userName }}</span>
         <div class="btn"> 
         <!-- <label id="isAdmin" for="isAdmin">Admin : <input type="checkbox" v-if="updateCheck"></label> -->
-        <button v-if="userData.id != user.id" @click="deleteUser(user.id)">supprimer</button>
+        <button id="delete" v-if="userData.id != user.id" @click="deleteUser(user.id)">supprimer</button>
         </div>
       </div>
     </div>
@@ -56,16 +56,10 @@ export default {
 <style scoped>
 
 .users{
-  
-  justify-content: center;
-  margin: auto;
-  background-color: beige;
-  position: relative;
-  display: flex;
-  flex-direction: row;
+  background-color: rgb(177, 176, 176);
   position: relative;
   height: 50px;
-  margin: 1rem
+  margin-top: 1rem;
 }
 
 #adminBoard__users{
@@ -76,7 +70,6 @@ export default {
    
 }
 #isAdmin{
-  margin: 1rem;
   padding: 1rem;
 }
 .btn {
@@ -84,5 +77,6 @@ export default {
   right: 30px;
   top: 15px
 }
+
 
 </style>

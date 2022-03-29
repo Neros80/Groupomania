@@ -1,39 +1,25 @@
 <template>
   <div class="home">
     <div class="post" v-for="post in posts.slice().reverse()" :key="post">
-      <button
-        class="delete"
-        v-if="post.userId == user.id || user.isAdmin == true"
-        @click="deletePost(post.id)"
-      >
+      <button id="delete" v-if="post.userId == user.id || user.isAdmin == true" @click="deletePost(post.id)">
         supprimer
       </button>
-      <font-awesome-icon icon="fa-solid fa-trash-can" />
 
       <h1 id="user">{{ post.userName }}</h1>
       <div class="userPost">
         <h2 id="title">{{ post.title }}</h2>
         <span class="message"> {{ post.messages }} </span>
       </div>
-      <div v-for="com in post.Coms" :key="com.id">
+      <div class="coms_content" v-for="com in post.Coms" :key="com.id">
         <p id="coms">
           {{ com.coms }}
-          <button
-            @click="deleteComs(com.id)"
-            v-if="com.userName == user.userName || user.isAdmin == true"
-          >
+          <button id="delete" @click="deleteComs(com.id)" v-if="com.userName == user.userName || user.isAdmin == true">
             supprimer
           </button>
         </p>
       </div>
       <div id="response">
-        <textarea
-          name="comment"
-          id="comment"
-          cols="10"
-          rows="5"
-          v-model="commentContent"
-        ></textarea>
+        <textarea name="comment" id="comment" cols="10" rows="5" placeholder="Commentaire" v-model="commentContent"></textarea>
         <button class="response--btn" @click="createComment(post.id)">
           repondre
         </button>
@@ -128,12 +114,12 @@ export default {
   color: black;
 }
 .post {
-  margin: auto;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin: 1rem;
-  padding: 1rem;
+  width: 90%;
   background-color: rgb(143, 143, 143);
   position: relative;
   border-radius: 10px;
@@ -142,15 +128,13 @@ export default {
   display: flex;
   flex-direction: column;
   align-content: center;
-  width: 80%;
   padding: 1rem;
-  margin: auto;
   background-color: rgb(177, 176, 176);
-  border-radius: 15px;
+  box-shadow:0.1em rgb(41, 41, 41);
 }
 
 #user {
-  width: 90%;
+  width: 100%;
   margin: auto;
   padding: 1rem;
 }
@@ -161,28 +145,32 @@ export default {
 .message {
   margin: auto;
 }
+.coms_content{
+  width: 100%;
+  margin: auto;
+}
 
 #coms {
-  border-radius: 10px;
-  width: 66%;
+  
   display: flex;
   align-items: center;
-  margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
-  margin-left: 15%;
   padding: 1rem;
   position: relative;
-  color: black;
-  background-color: rgb(177, 176, 176);
+  background-color: rgb(221, 220, 220);
+  box-shadow: 0 0 0.3em rgb(41, 41, 41);
+  border: 1px solid rgb(80, 80, 80);
+  margin-top: 0.5rem;
+  margin-bottom: 0.1rem;
 }
 #coms button {
   position: absolute;
   right: 20px;
 }
 #comment {
-  width: 66%;
   margin: auto;
+  margin-top: 1rem;
   border-radius: 10px;
+  width: 90%;
 }
 
 .delete {
@@ -196,6 +184,7 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
+  
 }
 
 .response--btn {
@@ -205,30 +194,28 @@ export default {
   background-color: rgb(0, 174, 255);
   border-radius: 5px;
   padding: 0.5rem;
-  right: 10px;
+  box-shadow: 0 0 0.3em rgb(41, 41, 41);
+  margin: 1rem;
+  font-size: 20px;
+
+}
+.post > #delete{
+  width: 25%;
   position: absolute;
-  bottom: 25px;
-  right: 60px;
+  right: 5px;
+  top:10px; 
+}
+#delete{
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.2rem;
+  box-shadow: 0 0 0.3em rgb(41, 41, 41);
+}
+#delete:hover{
+  box-shadow: 0 0 0.5em red;
 }
 
-@media screen and (max-width: 680px) {
-  body {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border: 1px solid rgb(0, 247, 255);
-  }
-  .home{
-   border: 1px solid rgb(0, 255, 55);
-  }
-  .post {
-    width: 100%;
-    border: 1px solid red;
-  }
-    #coms {
-      border: 1px solid red;
-    display: flex;
-    flex-direction: column;
-  }
-}
+
 </style>

@@ -1,8 +1,11 @@
 <template>
 
-  <body> 
+  <body>
+    <div class="navgiation"> 
+    <img class="logo" src="./assets/icon-left-font-monochrome-white.png" alt="logo-blanc">
+     <font-awesome-icon icon="fa-solid fa-trash-can" />
     <Hello />
-    
+    </div>
   </body>
   <router-view/>
 </template>
@@ -31,10 +34,22 @@ body{
   background-color: rgb(24, 24, 24);
   display: flex;
   justify-content: center;
-  width: 100%;
+}
+.navgiation{
+  display: flex;
+  flex-direction: column;
+}
+
+.logo{
+  width: 50%;
+  padding: 1rem;
+  margin: auto;
+  margin-bottom: -70px;
+  margin-top: -65px;
+
 }
 
 #app{
-  width: 66%;
+  width: 100%;
 }
 </style>

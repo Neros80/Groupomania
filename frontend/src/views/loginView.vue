@@ -2,7 +2,7 @@
   <div class="login">
       <label for="userName">Pseudo <input v-model="userName" type="text"></label>
       <label for="password">Mot de passe <input v-model="password" type="password"></label>
-      <button v-on:click="submit"> Connection </button>
+      <button class="response--btn" v-on:click="submit"> Connexion </button>
   </div>
 </template>
 
@@ -25,3 +25,29 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.login{
+  color: white;
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem;
+}
+
+label{
+  text-align: center;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+input{
+  border-radius: 5px;
+  height: 2.5rem;
+  margin-top: 1rem;
+}
+
+
+</style>
