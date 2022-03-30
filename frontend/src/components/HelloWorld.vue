@@ -1,13 +1,13 @@
 <template>
   <nav>
     <div class="nav--content">
-    <router-link id="link" to="/" v-if="currentUser">Accueil</router-link>
-    <router-link id="link" to="/about"  v-if="currentUser">Post</router-link>
-    <router-link id="link" to="/signup"  v-if="!currentUser">Signup</router-link>
-    <router-link id="link" to="/login"  v-if="!currentUser">login</router-link>
-    <router-link id="link" to="/admin" v-if="currentUser && user.isAdmin == true">admin</router-link>
+    <router-link class="link" to="/" v-if="currentUser">Accueil</router-link>
+    <router-link class="link" to="/about"  v-if="currentUser">Post</router-link>
+    <router-link class="link" to="/signup"  v-if="!currentUser">Signup</router-link>
+    <router-link class="link" to="/login"  v-if="!currentUser">login</router-link>
+    <router-link class="link" to="/admin" v-if="currentUser && user.isAdmin == true">admin</router-link>
     </div>
-    <a href="#" id="logout--btn" @click="logout" v-if="currentUser">Déconnexion</a>
+    <a href="#" class="logout--btn" @click="logout" v-if="currentUser">Déconnexion</a>
     
   </nav>
 </template>
@@ -58,21 +58,21 @@ nav{
   margin: auto;
   align-content: center;
 }
-#link{
+.link{
   padding: 1rem;
   text-decoration: none;
   color: white;
 }
-#link:hover{
+.link:hover{
   color: rgb(205, 230, 252);
   text-shadow:  rgb(205, 230, 252) 1px 0 5px;
 }
-#logout--btn{
+.logout--btn{
   margin: auto;
   text-decoration: none;
   color: white;
 }
-#logout--btn:hover{
+.logout--btn:hover{
   color: red;
   text-shadow:  red 1px 0 5px;
 }
@@ -86,7 +86,7 @@ nav{
     margin-top: 1rem;
   }
 
-#logout--btn{
+.logout--btn{
   padding-left: 1rem;
 }
 

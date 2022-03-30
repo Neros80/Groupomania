@@ -4,10 +4,10 @@
     <div class="admin">
       <div class="users" v-for="user in users" :key="user">
         <div>
-          <span id="adminBoard__users"> {{ user.userName }}</span>
+          <span class="adminBoard__users"> {{ user.userName }}</span>
           <div class="btn"> 
           <!-- <label id="isAdmin" for="isAdmin">Admin : <input type="checkbox" v-if="updateCheck"></label> -->
-          <a id="delete" v-if="userData.id != user.id" @click="deleteUser(user.id)"><font-awesome-icon icon="trash-can" /></a>
+          <a class="delete" v-if="userData.id != user.id" @click="deleteUser(user.id)"><font-awesome-icon icon="trash-can" /></a>
           </div>
         </div>
       </div>
@@ -69,14 +69,14 @@ export default {
   margin-top: 1rem;
 }
 
-#adminBoard__users{
+.adminBoard__users{
   margin: 1rem;
   display: flex;
   position: absolute;
   left: 10px
    
 }
-#isAdmin{
+.isAdmin{
   padding: 1rem;
 }
 .btn {

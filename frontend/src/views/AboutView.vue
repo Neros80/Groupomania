@@ -2,11 +2,11 @@
   <div>
     <Hello />
     <div class="about">
-      <h1 id='user'>{{ user.userName }}</h1>
+      <h1 class='user'>{{ user.userName }}</h1>
       <p>Titre du Post :</p>
-      <textarea v-model="title" name="title" id="title" cols="10" rows="5"></textarea>
+      <textarea v-model="title" name="title" class="title" cols="10" rows="5"></textarea>
       <p>Message :</p>
-      <textarea v-model="messages" name="messages" id="message" cols="30" rows="10"></textarea>
+      <textarea v-model="messages" name="messages" class="message" cols="30" rows="10"></textarea>
       <button class="response--btn" v-on:click="submit">envoyer</button>
     </div>
   </div>
@@ -65,7 +65,7 @@ export default {
   flex-direction: column;
   color: white;
 }
-  #user{
+  .user{
     border-radius: 10px;
   }
 p{
@@ -73,8 +73,8 @@ p{
   padding: 1rem;
 }
 
-#title,
-#message {
+.title,
+.message {
   margin: auto;
   margin-top: 1rem;
   border-radius: 10px;
@@ -91,7 +91,7 @@ p{
     border-radius: 15px;
     color: black;
   }
-  #user{
+  .user{
     border-radius: 15px 15px 0 0;
   }
   .response--btn{

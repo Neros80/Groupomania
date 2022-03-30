@@ -3,26 +3,26 @@
     <Hello />
     <div class="home">
       <div class="post" v-for="post in posts.slice().reverse()" :key="post">
-        <a id="delete" v-if="post.userId == user.id || user.isAdmin == true" @click="deletePost(post.id)">
+        <a class="delete" v-if="post.userId == user.id || user.isAdmin == true" @click="deletePost(post.id)">
           <font-awesome-icon icon="trash-can" />
         </a>    
 
-        <h1 id="user"> Posté par : {{ post.userName }} le {{ post.createdAt.split("T")[0].split("-").reverse().join("/") + ", à " + post.createdAt.split("T")[1].split(":").slice(0,-1).join(":") }}</h1>
+        <h1 class="user"> Posté par : {{ post.userName }} le {{ post.createdAt.split("T")[0].split("-").reverse().join("/") + ", à " + post.createdAt.split("T")[1].split(":").slice(0,-1).join(":") }}</h1>
         <div class="userPost">
-          <h2 id="title">{{ post.title }}</h2>
+          <h2 class="title">{{ post.title }}</h2>
           <span class="message"> {{ post.messages }} </span>
         </div>
         <div class="coms_content" v-for="com in post.Coms" :key="com.id">
-          <div id="coms">
-          <p id="userComs">reponse de : {{com.userName}} le {{ com.createdAt.split("T")[0].split("-").reverse().join("/") + ", à " + com.createdAt.split("T")[1].split(":").slice(0,-1).join(":") }}</p>
-          <p id="coms--content"> {{ com.coms }}</p>
-          <a id="delete" @click="deleteComs(com.id)" v-if="com.userName == user.userName || user.isAdmin == true"><font-awesome-icon icon="trash-can" /></a>
+          <div class="coms">
+          <p class="userComs">Réponse de : {{com.userName}} le {{ com.createdAt.split("T")[0].split("-").reverse().join("/") + ", à " + com.createdAt.split("T")[1].split(":").slice(0,-1).join(":") }}</p>
+          <p class="coms--content"> {{ com.coms }}</p>
+          <a class="delete" @click="deleteComs(com.id)" v-if="com.userName == user.userName || user.isAdmin == true"><font-awesome-icon icon="trash-can" /></a>
         </div>
         </div>
-        <div id="response">
-          <textarea name="comment" id="comment" cols="10" rows="5" placeholder="Commentaire" v-model="commentContent"></textarea>
+        <div class="response">
+          <textarea name="comment" class="comment" cols="10" rows="5" placeholder="Commentaire" v-model="commentContent"></textarea>
           <button class="response--btn" @click="createComment(post.id)">
-            repondre
+            Répondre
           </button>
         </div>
       </div>
@@ -135,7 +135,7 @@ export default {
   box-shadow:0.1em rgb(41, 41, 41);
 }
 
-#user {
+.user {
   background-color: #D1515A;
   padding: 1rem;
   padding-right: 4rem;
@@ -144,7 +144,7 @@ export default {
   border-radius: 10px 10px 0 0;
   font-size: 1.4rem;
 }
-#title {
+.title {
   width: 100%;
   margin: auto;
 }
@@ -157,7 +157,7 @@ export default {
   margin: auto;
 }
 
-#coms {
+.coms {
   display: flex;
   align-items: center;
   position: relative;
@@ -168,17 +168,17 @@ export default {
   margin-bottom: 0.1rem;
   flex-wrap: wrap;
 }
-#coms > #delete {
+.coms > .delete {
   position: absolute;
   right: 20px;
   top: 30px;
   color: #686868;
 }
-#coms > #delete:hover{
+.coms > .delete:hover{
   color: red;
   text-shadow: 0 0 1em rgb(255, 0, 0);
 }
-#userComs{
+.userComs{
     width: 100%;
     padding-bottom: 0.2rem;
     padding-left: 0.2rem;
@@ -186,11 +186,11 @@ export default {
     margin: 0.2rem;
     color: #686868;
 }
-#coms--content{
+.coms--content{
   padding: 1.2rem;
   width: 90%;
 }
-#comment {
+.comment {
   margin: auto;
   margin-top: 1rem;
   border-radius: 10px;
@@ -200,7 +200,7 @@ export default {
 .message {
   margin: 1rem;
 }
-#response {
+.response {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -219,17 +219,17 @@ export default {
   font-size: 20px;
 
 }
-.post > #delete{
+.post > .delete{
   position: absolute;
   right: 25px;
   top:20px; 
 }
 
-#delete{
+.delete{
   color: rgb(255, 255, 255);
   font-size: 1.2rem;
 }
-#delete:hover{
+.delete:hover{
   color: red;
   text-shadow: 0 0 0.3em rgb(255, 0, 0);
 }
@@ -246,16 +246,16 @@ export default {
   .coms_content{
     width: 90%;
   }
-  #coms{
+  .coms{
     border-radius: 15px;
     padding: 0.1rem;
   }
-  #coms--content{
+  .coms--content{
     padding: 0.5rem;
     margin: 0.1rem;
   }
 
-  #response{
+  .response{
     display: flex;
     align-items: center;
   }
