@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>{{ user.userName }}</h1>
+    <h1 id='user'>{{ user.userName }}</h1>
     <p>Titre du Post :</p>
     <textarea v-model="title" name="title" id="title" cols="10" rows="5"></textarea>
     <p>Message :</p>
@@ -54,11 +54,14 @@ export default {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 1rem;
   color: white;
 }
+  #user{
+    border-radius: 10px;
+  }
 p{
   font-size: 20px;
+  padding: 1rem;
 }
 
 #title,
@@ -67,5 +70,18 @@ p{
   margin-top: 1rem;
   border-radius: 10px;
   width: 90%;
+  
 }
+
+@media (min-width: 720px){
+  .about{
+    width: 50%;
+    margin: auto;
+    margin-top: 3rem;
+    background-color: #AEAEAF;
+    border-radius: 15px;
+    color: black;
+  }
+}
+
 </style>

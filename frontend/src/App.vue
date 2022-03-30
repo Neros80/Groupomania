@@ -2,7 +2,7 @@
 
   <body>
     <div class="navgiation"> 
-    <img class="logo" src="./assets/new-icon-left-font.png" alt="logo-blanc">
+    <img class="logo" src="./assets/icon-left-font-monochrome-white.png" alt="logo-blanc">
      <font-awesome-icon icon="fa-solid fa-trash-can" />
     <Hello />
     </div>
@@ -30,10 +30,11 @@ import Hello from '@/components/HelloWorld.vue'
 
 <style>
 body{
-  font-family: 'Open Sans', sans-serif;
-  background-color: rgb(24, 24, 24);
+  font-family: 'Hind Siliguri', sans-serif;
+  background-color: #091F43;
   display: flex;
   justify-content: center;
+  min-width: 450px;
 }
 .navgiation{
   display: flex;
@@ -44,7 +45,6 @@ body{
   width: 50%;
   margin: auto;
   margin-bottom: -100px;
-  margin-top: -160px;
 }
 
 #app{

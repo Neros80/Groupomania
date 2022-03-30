@@ -51,6 +51,15 @@ input{
   height: 2.5rem;
   margin-top: 1rem;
 }
+@media (min-width: 720px){
+  .login{
+    width: 30%;
+    margin: auto;
+    background-color: #AEAEAF;
+    border-radius: 15px;
+  }
+}
+
 
 
 </style>

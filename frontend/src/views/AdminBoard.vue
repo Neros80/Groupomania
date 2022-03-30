@@ -1,5 +1,5 @@
 <template>
-  <div class="Admin">
+  <div class="admin">
     <div class="users" v-for="user in users" :key="user">
       <div>
         <span id="adminBoard__users"> {{ user.userName }}</span>
@@ -76,6 +76,19 @@ export default {
   position: absolute;
   right: 30px;
   top: 15px
+}
+@media (min-width: 720px){
+  .admin{
+    width: 50%;
+    margin: auto;
+    border-radius: 15px;
+    color: black;
+    margin-top: 3rem;
+  }
+  .users{
+    margin: 1rem;
+    border-radius: 10px;
+  }
 }
 
 

@@ -117,23 +117,26 @@ export default {
   display: flex;
   flex-direction: column;
   width: 90%;
-  background-color: rgb(143, 143, 143);
+  background-color: #AEAEAF;
   position: relative;
   border-radius: 10px;
 }
+
 .userPost {
   display: flex;
   flex-direction: column;
   align-content: center;
   padding: 1rem;
-  background-color: rgb(177, 176, 176);
+  background-color: #C4C5C5;
   box-shadow:0.1em rgb(41, 41, 41);
 }
 
 #user {
-  width: 100%;
-  margin: auto;
+  background-color: #D1515A;
   padding: 1rem;
+  color: #ffffff;
+  margin-top: 0;
+  border-radius: 10px 10px 0 0;
 }
 #title {
   width: 100%;
@@ -224,6 +227,37 @@ export default {
 }
 #delete:hover{
   box-shadow: 0 0 0.5em red;
+}
+
+@media (min-width: 720px){
+  .home{
+    width: 66%;
+    margin: auto;
+  }
+  .userPost{
+    margin: 1rem;
+    border-radius: 15px;
+  }
+  .coms_content{
+    width: 90%;
+  }
+  #coms{
+    border-radius: 15px;
+    padding: 0.1rem;
+  }
+  #coms--content{
+    padding: 0.5rem;
+    margin: 0.1rem;
+  }
+
+  #response{
+    display: flex;
+    align-items: center;
+  }
+  .response--btn{
+    width: 33%;
+    justify-content: center;
+  }
 }
 
 

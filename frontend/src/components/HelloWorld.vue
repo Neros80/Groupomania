@@ -73,4 +73,16 @@ nav{
   color: red;
   text-shadow:  red 1px 0 5px;
 }
+
+@media (min-width: 720px){
+  nav{
+    display: flex;
+    width: 50%;
+    flex-direction: row ;
+  }
+  .nav--content{
+  margin:auto;
+}
+
+}
 </style>
