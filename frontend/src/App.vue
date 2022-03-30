@@ -2,28 +2,19 @@
 
   <body>
     <div class="navgiation"> 
-    <img class="logo" src="./assets/icon-left-font-monochrome-white.png" alt="logo-blanc">
-     <font-awesome-icon icon="fa-solid fa-trash-can" />
-    <Hello />
+    <img class="logo" src="./assets/icon-left-font-monochrome-white-2.png" alt="logo-blanc">
     </div>
   </body>
   <router-view/>
 </template>
 
 <script>
-import Hello from '@/components/HelloWorld.vue'
-
-  
   export  default {
     name: 'App',
     data(){
       return{
-        currentUser : false
       }
     },
-    components:{
-      Hello
-    }
 }
 </script>
 
@@ -35,6 +26,7 @@ body{
   display: flex;
   justify-content: center;
   min-width: 450px;
+  
 }
 .navgiation{
   display: flex;
@@ -44,10 +36,15 @@ body{
 .logo{
   width: 50%;
   margin: auto;
-  margin-bottom: -100px;
 }
 
 #app{
   width: 100%;
+}
+@media (min-width: 720px){
+  .logo{
+    margin: auto;
+    position: relative;
+  }
 }
 </style>

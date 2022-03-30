@@ -1,15 +1,28 @@
 <template>
-  <div class="login">
-      <label for="userName">Pseudo <input v-model="userName" type="text"></label>
-      <label for="password">Mot de passe <input v-model="password" type="password"></label>
-      <button class="response--btn" v-on:click="submit"> Connexion </button>
-  </div>
+  <div>
+    <Hello />
+      <div class="login">
+          <label for="userName">Pseudo <input v-model="userName" type="text"></label>
+          <label for="password">Mot de passe <input v-model="password" type="password"></label>
+          <button class="response--btn" v-on:click="submit"> Connexion </button>
+      </div>
+    </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Hello from '@/components/HelloWorld.vue'
 
 export default {
+   name: 'LoginView',
+    data(){
+      return{
+        currentUser : false
+      }
+    },
+    components:{
+      Hello
+    },
   methods: {
     submit(){
           axios
@@ -57,6 +70,11 @@ input{
     margin: auto;
     background-color: #AEAEAF;
     border-radius: 15px;
+    color:black;
+  }
+    .response--btn{
+    margin: auto;
+    margin-top: 1rem;
   }
 }
 

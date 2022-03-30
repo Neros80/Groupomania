@@ -5,7 +5,7 @@ const asyncLib = require('async');
 const { verify } = require('jsonwebtoken');
 
 //regex
-const PASSWORD_REGEX = /^(?=.*\d).{4,8}$/;
+const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
 //routes
 

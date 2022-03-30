@@ -1,27 +1,30 @@
 <template>
-  <div class="home">
-    <div class="post" v-for="post in posts.slice().reverse()" :key="post">
-      <button id="delete" v-if="post.userId == user.id || user.isAdmin == true" @click="deletePost(post.id)">
-        supprimer
-      </button>
+  <div>
+    <Hello />
+    <div class="home">
+      <div class="post" v-for="post in posts.slice().reverse()" :key="post">
+        <a id="delete" v-if="post.userId == user.id || user.isAdmin == true" @click="deletePost(post.id)">
+          <font-awesome-icon icon="trash-can" />
+        </a>    
 
-      <h1 id="user">{{ post.userName }}</h1>
-      <div class="userPost">
-        <h2 id="title">{{ post.title }}</h2>
-        <span class="message"> {{ post.messages }} </span>
-      </div>
-      <div class="coms_content" v-for="com in post.Coms" :key="com.id">
-        <div id="coms">
-        <p id="userComs">{{com.userName}}</p>
-        <p id="coms--content"> {{ com.coms }}</p>
-        <button id="delete" @click="deleteComs(com.id)" v-if="com.userName == user.userName || user.isAdmin == true">Supprimer</button>
-      </div>
-      </div>
-      <div id="response">
-        <textarea name="comment" id="comment" cols="10" rows="5" placeholder="Commentaire" v-model="commentContent"></textarea>
-        <button class="response--btn" @click="createComment(post.id)">
-          repondre
-        </button>
+        <h1 id="user"> Posté par : {{ post.userName }} le {{ post.createdAt.split("T")[0].split("-").reverse().join("/") + ", à " + post.createdAt.split("T")[1].split(":").slice(0,-1).join(":") }}</h1>
+        <div class="userPost">
+          <h2 id="title">{{ post.title }}</h2>
+          <span class="message"> {{ post.messages }} </span>
+        </div>
+        <div class="coms_content" v-for="com in post.Coms" :key="com.id">
+          <div id="coms">
+          <p id="userComs">reponse de : {{com.userName}} le {{ com.createdAt.split("T")[0].split("-").reverse().join("/") + ", à " + com.createdAt.split("T")[1].split(":").slice(0,-1).join(":") }}</p>
+          <p id="coms--content"> {{ com.coms }}</p>
+          <a id="delete" @click="deleteComs(com.id)" v-if="com.userName == user.userName || user.isAdmin == true"><font-awesome-icon icon="trash-can" /></a>
+        </div>
+        </div>
+        <div id="response">
+          <textarea name="comment" id="comment" cols="10" rows="5" placeholder="Commentaire" v-model="commentContent"></textarea>
+          <button class="response--btn" @click="createComment(post.id)">
+            repondre
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -29,16 +32,17 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Hello from "@/components/HelloWorld.vue";
 import axios from "axios";
 
 export default {
   name: "HomeView",
   components: {
-    HelloWorld,
+    Hello,
   },
   data() {
     return {
+      currentUser : false,
       posts: [],
       user: JSON.parse(localStorage.getItem("user")),
     };
@@ -134,9 +138,11 @@ export default {
 #user {
   background-color: #D1515A;
   padding: 1rem;
+  padding-right: 4rem;
   color: #ffffff;
   margin-top: 0;
   border-radius: 10px 10px 0 0;
+  font-size: 1.4rem;
 }
 #title {
   width: 100%;
@@ -154,7 +160,6 @@ export default {
 #coms {
   display: flex;
   align-items: center;
-  padding: 1rem;
   position: relative;
   background-color: rgb(221, 220, 220);
   box-shadow: 0 0 0.3em rgb(41, 41, 41);
@@ -163,19 +168,26 @@ export default {
   margin-bottom: 0.1rem;
   flex-wrap: wrap;
 }
-#coms > button {
+#coms > #delete {
   position: absolute;
   right: 20px;
-  top: 20px;
+  top: 30px;
+  color: #686868;
+}
+#coms > #delete:hover{
+  color: red;
+  text-shadow: 0 0 1em rgb(255, 0, 0);
 }
 #userComs{
     width: 100%;
     padding-bottom: 0.2rem;
-    font-size: 22px;
+    padding-left: 0.2rem;
+    font-size: 1rem;
     margin: 0.2rem;
+    color: #686868;
 }
 #coms--content{
-  padding: 1rem;
+  padding: 1.2rem;
   width: 90%;
 }
 #comment {
@@ -185,10 +197,6 @@ export default {
   width: 90%;
 }
 
-.delete {
-  position: absolute;
-  right: 20px;
-}
 .message {
   margin: 1rem;
 }
@@ -212,21 +220,18 @@ export default {
 
 }
 .post > #delete{
-  width: 25%;
   position: absolute;
-  right: 5px;
-  top:10px; 
+  right: 25px;
+  top:20px; 
 }
+
 #delete{
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 0.2rem;
-  box-shadow: 0 0 0.3em rgb(41, 41, 41);
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
 }
 #delete:hover{
-  box-shadow: 0 0 0.5em red;
+  color: red;
+  text-shadow: 0 0 0.3em rgb(255, 0, 0);
 }
 
 @media (min-width: 720px){

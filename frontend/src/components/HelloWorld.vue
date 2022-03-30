@@ -5,7 +5,7 @@
     <router-link id="link" to="/about"  v-if="currentUser">Post</router-link>
     <router-link id="link" to="/signup"  v-if="!currentUser">Signup</router-link>
     <router-link id="link" to="/login"  v-if="!currentUser">login</router-link>
-    <router-link id="link" to="/admin" v-if="currentUser">admin</router-link>
+    <router-link id="link" to="/admin" v-if="currentUser && user.isAdmin == true">admin</router-link>
     </div>
     <a href="#" id="logout--btn" @click="logout" v-if="currentUser">Déconnexion</a>
     
@@ -18,7 +18,8 @@
     name: 'Hello',
     data(){
       return{
-        currentUser : false
+        currentUser : false,
+        user: JSON.parse(localStorage.getItem("user")),
       }
     },
     computed:{
@@ -50,10 +51,12 @@ nav{
   color: white;
   font-size: 1.5rem;
   margin: auto;
+
 }
 
 .nav--content{
-  margin: 1rem;
+  margin: auto;
+  align-content: center;
 }
 #link{
   padding: 1rem;
@@ -77,11 +80,14 @@ nav{
 @media (min-width: 720px){
   nav{
     display: flex;
-    width: 50%;
     flex-direction: row ;
+    max-width: 20%;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
   }
-  .nav--content{
-  margin:auto;
+
+#logout--btn{
+  padding-left: 1rem;
 }
 
 }
