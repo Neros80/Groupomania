@@ -23,7 +23,7 @@ module.exports = {
         }
 
         if (!PASSWORD_REGEX.test(password)) {
-            return res.status(400).json({ 'error': 'password invalid(must be length 4-8 include 1 number at least' })
+            return res.status(400).json({ 'error': 'password invalid(must be length 6 include 1 number at least' })
         }
 
         asyncLib.waterfall([
