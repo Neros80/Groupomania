@@ -19,6 +19,7 @@ module.exports = {
       },
       PostId: {
         allowNull:false,
+        onDelete: 'CASCADE',
         type: Sequelize.INTEGER,
         references: {
           model: 'Posts',
