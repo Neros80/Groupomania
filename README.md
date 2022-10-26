@@ -1,8 +1,8 @@
 
 # Description
-Création d'un réseaux social d'entreprise
+Création d'un réseaux social d'entreprise (projet OpenClassroom)
 
-possibilité de créer des posts et de pouvoir y répondre en commentaire avec un accès spécial réservé aux admins
+Possibilité de créer des posts et de pouvoir y répondre en commentaire avec un accès spécial réservé aux admins
 
 # Installation
 
