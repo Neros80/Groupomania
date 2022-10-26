@@ -1,8 +1,8 @@
 
 # Description
-Création d'un réseaux social d'entreprise (projet OpenClassroom)
+Création d'un réseau social d'entreprise (projet OpenClassroom)
 
-Possibilité de créer des posts et de pouvoir y répondre en commentaire avec un accès spécial réservé aux admins
+Possibilité de créer des posts et de pouvoir y répondre en commentaires avec un accès spécial réservé aux admins
 
 # Installation
 
@@ -12,7 +12,7 @@ Executer la commande "npm install"
 ```bash
 npm install
 ```
-Ce rendre dans config/config.json :
+Se rendre dans config/config.json :
 Remplacer les password par votre mot de passe MySQL
 Executer les commandes suivantes dans la console :
 ```bash
