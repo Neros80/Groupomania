@@ -17,11 +17,9 @@ remplacer les password par votre mot de passe MySQL
 executer les commandes suivantes dans la console :
 ```bash
 sequelize db:create
-```
-```bash
+
 sequelize db:migrate 
-```
-```bash
+
 nodemone server
 ```
 ouvrir un terminal sur le frontend:
