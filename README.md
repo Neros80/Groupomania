@@ -6,15 +6,15 @@ possibilité de créer des posts et de pouvoir y répondre en commentaire avec u
 
 # Installation
 
-ouvrir un terminal sur le backend:
+Ouvrir un terminal sur le backend:
 
- - executer la commande "npm install"
+Executer la commande "npm install"
 ```bash
 npm install
 ```
-ce rendre dans config/config.json :
-remplacer les password par votre mot de passe MySQL
-executer les commandes suivantes dans la console :
+Ce rendre dans config/config.json :
+Remplacer les password par votre mot de passe MySQL
+Executer les commandes suivantes dans la console :
 ```bash
 sequelize db:create
 
@@ -22,7 +22,7 @@ sequelize db:migrate
 
 nodemone server
 ```
-ouvrir un terminal sur le frontend:
+Ouvrir un terminal sur le frontend:
 
 ```bash
 npm install
